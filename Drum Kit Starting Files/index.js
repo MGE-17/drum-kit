@@ -6,12 +6,16 @@ for ( i = 0; i < numberOfDrumButtons; i++){
         let buttonInnerHTML = this.innerHTML;
 
         checkKeyStroke(buttonInnerHTML);
+
+        buttonAnimation(buttonInnerHTML);
     });
 }
 
 
 document.addEventListener("keydown",function(event){
      checkKeyStroke(event.key)
+
+     buttonAnimation(event.key);
 });
 
 function checkKeyStroke(key){
@@ -58,4 +62,18 @@ break;
         default: console.log(buttonInnerHTML);
             break;
     }
+}
+
+
+function buttonAnimation(currentKey){
+
+
+   let activeButton =  document.querySelector("." + currentKey)
+
+   activeButton.classList.add("pressed");
+
+   setTimeout(function(){
+    activeButton.classList.remove("pressed");
+
+   }, 100); 
 }
